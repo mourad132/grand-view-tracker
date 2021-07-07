@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<hml>
+	<head>
+		<title>Grand View Tracker</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</head>
+	<body>
+		<input type="text" placeholder="Enter Auth Password">
+		<input type="submit" onClick="verify()"/>
+		<p style="display: none"><%= id %></p>
+		<script>
+			const input = document.querySelector("input");
+			const cons = document.querySelector("p").textContent;
+			const verify = () => {
+				 if(input.value == 7878) {
+					alert("access granted")
+					axios.post("/exit/" + cons)
+					.then(res => console.log(res.data))
+				} 
+				else if(input.value == 1234){
+					alert("access granted")
+					axios.post("/enter/" + cons)
+					.then(res => console.log(res.data))
+				}
+				else {
+					alert("no access")
+				}
+			}
+		</script>
+	</body>
+</hml>
